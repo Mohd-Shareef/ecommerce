@@ -1,0 +1,26 @@
+
+{% extends 'store/templates/main.html' %}
+{% load static %}
+{% block content %}
+{%if messages %}
+{% for message in messages%}
+<div class="alert alert-{{message.tags}}" role="alert">
+	{{message}}
+</div>
+{% endfor %}
+{% endif %}
+	<div class="row">
+		{% for product in products%}
+		<div class="col-lg-4">
+			<img class="thumbnail" src={{product.image.url}}>
+			<div class="box-element product">
+				<h6><strong>{{product.name}}</strong></h6>
+				<hr>
+				<a class="btn btn-outline-primary" href="/products/{{product.id}}">View</a>
+				<h4 style="display: inline-block;float: right"><strong>Rs{{product.price}}</strong></h4>
+
+			</div>
+			
+		</div>
+		{% endfor %}
+{% endblock content %}

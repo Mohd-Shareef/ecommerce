@@ -1,0 +1,29 @@
+{% extends 'store/templates/main.html' %}
+{% load static %}
+{% block content %}
+{% block title %} <h4><strong>{{product.name}}</strong></h4> {% endblock %}
+<div class="container-my-4">
+  <div class="row">
+    <form method="POST" action="/add_to_cart/{{product.id}}">
+      {% csrf_token %}
+  <div class="col-md-4">
+    <div class="row">
+      <img src={{product.image.url}} height="345" width="343">
+    </div>
+  </div>
+      <div class="col-md-8">
+        <h5>{{product.name}}</h5>
+        <h5><strong>Rs{{product.price}}</strong></h5>
+        <p>{{product.desc}}</p>
+      </div>
+    </div>
+    <div class="row-mr-4">
+      <label for="quantity">Quantity:</label>
+      <input type="number" name="quantity" value="1">
+    </div>
+    <div>
+      <button class="btn btn-warning">Buy Now</button>
+      <button class="btn btn-warning" type="submit">Add to Cart</button>
+    </div>
+  </form>
+{% endblock content %}
